@@ -1,0 +1,38 @@
+---
+- name: "MEDIUM | RHEL-07-86681 | SERVICE | The Red Hat Enterprise Linux operating system must disable Kernel core dumps unless needed."
+  service:
+    name: kdump
+    enabled: "no"
+    state: "stopped"
+  register: service_result
+  failed_when: "service_result is failed and ('Could not find the requested service' not in service_result.msg)"
+  tags:
+    - service_kdump_disabled
+    - medium_severity
+    - disable_strategy
+    - low_complexity
+    - low_disruption
+    - CCE-80258-7
+    - NIST-800-53-AC-17(8)
+    - NIST-800-53-CM-7
+    - NIST-800-53-CM-6(b)
+    - DISA-STIG-RHEL-07-021300
+- name: Disable socket of service kdump if applicable
+  service:
+    name: kdump.socket
+    enabled: "no"
+    state: "stopped"
+  register: socket_result
+  failed_when: "socket_result is failed and ('Could not find the requested service' not in socket_result.msg)"
+  tags:
+    - service_kdump_disabled
+    - medium_severity
+    - disable_strategy
+    - low_complexity
+    - low_disruption
+    - CCE-80258-7
+    - NIST-800-53-AC-17(8)
+    - NIST-800-53-CM-7
+    - NIST-800-53-CM-6(b)
+    - DISA-STIG-RHEL-07-021300
+
