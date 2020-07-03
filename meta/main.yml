@@ -1,8 +1,8 @@
 ---
 galaxy_info:
-    author: "Sam Doran, Josh Springer, Daniel Shepherd, James Cassell, Mike Renfro"
+    author: "wid"
     description: "Apply the DISA RHEL 7 STIG"
-    company: "MindPoint Group"
+    company: "WID"
     license: MIT
     min_ansible_version: 2.4
 
